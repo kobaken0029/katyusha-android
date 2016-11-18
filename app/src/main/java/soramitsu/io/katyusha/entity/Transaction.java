@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha;
+package soramitsu.io.katyusha.entity;
 
 import com.google.gson.annotations.SerializedName;
 

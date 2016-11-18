@@ -7,7 +7,7 @@
 
         <variable
             name="transaction"
-            type="soramitsu.io.katyusha.Transaction" />
+            type="soramitsu.io.katyusha.entity.Transaction" />
     </data>
 
     <RelativeLayout

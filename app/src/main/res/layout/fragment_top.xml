@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="userInfo"
+            type="soramitsu.io.katyusha.entity.UserInfo" />
+    </data>
+
     <LinearLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
@@ -10,15 +17,17 @@
         android:orientation="vertical"
         android:weightSum="3">
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
             android:id="@+id/pocket_money"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
+            android:maxLines="1"
             android:paddingBottom="16dp"
+            android:text='@{"$" + String.valueOf(userInfo.amount)}'
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="60sp"
             tools:text="4500 moe" />
 
         <android.support.v7.widget.CardView
