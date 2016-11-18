@@ -39,8 +39,4 @@ public class Transaction {
     public boolean isRemittance(String publicKey) {
         return sender.equals(publicKey);
     }
-
-    public boolean isShaken() {
-        return kataware != null;
-    }
 }
