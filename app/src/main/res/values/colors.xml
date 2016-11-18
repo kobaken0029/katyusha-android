@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorPrimaryLight">#B3E5FC</color>
+    <color name="colorAccent">#FFC107</color>
+
+    <!-- Text & Icon -->
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="text_icons">#FFFFFF</color>
+    <color name="divider_color">#BDBDBD</color>
+
+    <!-- Greyscales -->
+    <color name="grey200">#EEEEEE</color>
+    <color name="grey300">#E0E0E0</color>
+    <color name="grey400">#BDBDBD</color>
+    <color name="grey600">#757575</color>
+    <color name="black">#212121</color>
+    <color name="white">#FAFAFA</color>
+    <color name="grey">#AAFFFFFF</color>
+
+    <!-- Others -->
+    <color name="red600">#E53935</color>
+    <color name="pink600">#D81B60</color>
+    <color name="purple600">#8E24AA</color>
+    <color name="blue600">#1E88E5</color>
+    <color name="cyan600">#00ACC1</color>
+    <color name="green600">#43A047</color>
+    <color name="yellow600">#FDD835</color>
+    <color name="orange600">#FB8C00</color>
+    <color name="brown600">#6D4C41</color>
+    <color name="light_green600">#7CB342</color>
+</resources>

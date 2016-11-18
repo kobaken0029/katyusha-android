@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="soramitsu.io.katyusha.Transaction" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/transfer_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:text="@{transaction.amount}"
+                android:gravity="center"
+                android:textColor="@color/primary_text"
+                android:textSize="24sp"
+                tools:text="100 moe" />
+
+            <View
+                android:id="@+id/state"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignTop="@id/transfer_amount"
+                android:layout_centerVertical="true"
+                tools:background="@drawable/ic_withdraw_money_24dp" />
+
+            <TextView
+                android:id="@+id/trading_partner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/state"
+                android:ellipsize="end"
+                android:text="@{transaction.opponent}"
+                android:maxEms="10"
+                android:maxLines="1"
+                android:textColor="@color/secondary_text"
+                android:textSize="18sp"
+                tools:text="あいうえお支店" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="bottom|end"
+            android:padding="4dp"
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp"
+            tools:text="10秒前" />
+
+    </RelativeLayout>
+</layout>
