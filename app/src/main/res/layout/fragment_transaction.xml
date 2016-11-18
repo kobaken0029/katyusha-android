@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/transfer_card"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Transfer"
+                android:textSize="50sp" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/receiver_card"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/transfer_card"
+            android:layout_centerInParent="true"
+            app:cardElevation="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Receiver"
+                android:textSize="50sp" />
+        </android.support.v7.widget.CardView>
+
+        <me.grantland.widget.AutofitTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/transfer_card"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="What would you like to do?"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40sp" />
+    </RelativeLayout>
+</layout>

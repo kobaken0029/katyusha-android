@@ -48,6 +48,7 @@ public class TopFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = DataBindingUtil.bind(view);
+        binding.transactionCard.setOnClickListener(v -> navigator.gotoTransaction());
         binding.transactionHistoryCard.setOnClickListener(v -> navigator.gotoTransactionHistory());
         binding.badgeCard.setOnClickListener(v -> navigator.gotoBadgeList());
     }
