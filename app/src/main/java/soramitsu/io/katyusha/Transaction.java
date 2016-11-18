@@ -36,7 +36,7 @@ public class Transaction {
         }
     }
 
-    public boolean isRemittance(String publicKey) {
+    public boolean isSent(String publicKey) {
         return sender.equals(publicKey);
     }
 }
