@@ -40,6 +40,7 @@ def OKHTTP_PACKAGE_VERSION = "3.3.1";
 def RX_ANDROID_PACKAGE_VERSION = "1.2.1"
 def CIRCLE_IMAGE_VIEW_PACKAGE_VERSION = "2.1.0"
 def IROHA_ANDROID_PACKAGE_VERSION = "1.0"
+def AUTO_FIT_TEXTVIEW_PACKAGE_VERSION = "0.2.+"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -56,4 +57,5 @@ dependencies {
     compile "de.hdodenhof:circleimageview:${CIRCLE_IMAGE_VIEW_PACKAGE_VERSION}"
     compile "io.reactivex:rxandroid:${RX_ANDROID_PACKAGE_VERSION}"
     compile "io.soramitsu:iroha-android:${IROHA_ANDROID_PACKAGE_VERSION}"
+    compile "me.grantland:autofittextview:${AUTO_FIT_TEXTVIEW_PACKAGE_VERSION}"
 }

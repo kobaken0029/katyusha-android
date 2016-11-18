@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import soramitsu.io.katyusha.databinding.ListItemBinding;
+import soramitsu.io.katyusha.entity.Transaction;
 
 public class TransactionListAdapter extends BaseAdapter {
     private Context context;

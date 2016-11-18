@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import soramitsu.io.katyusha.databinding.FragmentTransactionHistoryBinding;
+import soramitsu.io.katyusha.entity.Transaction;
 
 public class TransactionHistoryFragment extends Fragment {
     public final static String TAG = TransactionHistoryFragment.class.getSimpleName();

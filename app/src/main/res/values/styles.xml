@@ -1,11 +1,38 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NavigationDrawerImage">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">14dp</item>
+    </style>
+
+    <style name="NavigationDrawerBottom">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="NavigationDrawerHeaderText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <style name="NavigationDrawerHeaderText.MainText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NavigationDrawerHeaderText.SubText">
+        <item name="android:textColor">@color/grey200</item>
     </style>
 
     <style name="MyCardView">

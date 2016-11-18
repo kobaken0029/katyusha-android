@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import soramitsu.io.katyusha.databinding.FragmentTopBinding;
+import soramitsu.io.katyusha.entity.UserInfo;
 
 public class TopFragment extends Fragment {
     public static final String TAG = TopFragment.class.getSimpleName();
@@ -49,6 +50,13 @@ public class TopFragment extends Fragment {
         binding = DataBindingUtil.bind(view);
         binding.transactionHistoryCard.setOnClickListener(v -> navigator.gotoTransactionHistory());
         binding.badgeCard.setOnClickListener(v -> navigator.gotoBadgeList());
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        UserInfo userInfo = ((Katyusha) getActivity().getApplication()).getUserInfo();
+        binding.setUserInfo(userInfo);
     }
 
     @Override
