@@ -7,5 +7,5 @@ public interface Navigator {
     void gotoReceive();
     void gotoRightsList();
     void gotoBadgeList();
-    void gotoTransactionHistory();
+    void gotoTabHost();
 }

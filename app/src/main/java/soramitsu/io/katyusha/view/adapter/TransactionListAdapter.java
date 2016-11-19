@@ -43,18 +43,6 @@ public class TransactionListAdapter extends BaseAdapter {
         return transactionHistory.get(position);
     }
 
-    public List<Transaction> getItems() {
-        return transactionHistory;
-    }
-
-    public void addItem(Transaction transaction) {
-        transactionHistory.add(transaction);
-    }
-
-    public void addItems(List<Transaction> transactionHistory) {
-        this.transactionHistory.addAll(transactionHistory);
-    }
-
     public void setItems(List<Transaction> transactionHistory) {
         this.transactionHistory = transactionHistory;
     }
