@@ -89,6 +89,6 @@ public class ConfirmTransactionFragment extends Fragment {
                             }
                     );
         });
-        Glide.with(this).load(R.raw.allow).into(new GlideDrawableImageViewTarget(binding.forward));
+//        Glide.with(this).load(R.raw.arrow).into(new GlideDrawableImageViewTarget(binding.forward));
     }
 }

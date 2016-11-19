@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         if (getSupportFragmentManager().findFragmentByTag(TopFragment.TAG) != null) {
             super.onBackPressed();
         } else {
+            if (getSupportFragmentManager().findFragmentByTag(ConfirmTransactionFragment.TAG) != null
+                    || getSupportFragmentManager().findFragmentByTag(ReceiveFragment.TAG) != null) {
+                gotoTransaction();
+                return;
+            }
             gotoTop();
         }
     }
@@ -56,11 +61,21 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoConfirmTransaction() {
-        changeBackingToolbar(getString(R.string.confirm));
+        changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void gotoReceive() {
+        changeToolbar(getString(R.string.receive), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
+        allClearMenuChecked();
+        binding.navigationView.getMenu().getItem(1).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ReceiveFragment.newInstance(), ReceiveFragment.TAG)
                 .commit();
     }
 

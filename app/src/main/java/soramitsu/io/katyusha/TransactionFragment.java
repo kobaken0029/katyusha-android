@@ -50,6 +50,7 @@ public class TransactionFragment extends Fragment implements OnQRReaderListener 
             QRReaderDialogFragment fragment = QRReaderDialogFragment.newInstance();
             fragment.show(getChildFragmentManager(), QRReaderDialogFragment.TAG);
         });
+        binding.receiverCard.setOnClickListener(v -> navigator.gotoReceive());
     }
 
     @Override
