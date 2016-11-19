@@ -6,5 +6,5 @@ public interface Navigator {
     void gotoConfirmTransaction();
     void gotoReceive();
     void gotoBadgeList();
-    void gotoTransactionHistory();
+    void gotoTabHost();
 }

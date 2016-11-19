@@ -14,14 +14,14 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.domain.entity.UserInfo;
-import soramitsu.io.katyusha.view.fragment.ReceiveFragment;
-import soramitsu.io.katyusha.view.fragment.TopFragment;
-import soramitsu.io.katyusha.view.fragment.TransactionFragment;
-import soramitsu.io.katyusha.view.fragment.TransactionHistoryFragment;
 import soramitsu.io.katyusha.databinding.ActivityMainBinding;
+import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.view.fragment.BadgeFragment;
 import soramitsu.io.katyusha.view.fragment.ConfirmTransactionFragment;
+import soramitsu.io.katyusha.view.fragment.ReceiveFragment;
+import soramitsu.io.katyusha.view.fragment.TabHostFragment;
+import soramitsu.io.katyusha.view.fragment.TopFragment;
+import soramitsu.io.katyusha.view.fragment.TransactionFragment;
 
 public class MainActivity extends AppCompatActivity implements Navigator {
     private ActivityMainBinding binding;
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoTop() {
         initToolbar();
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(0).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, TopFragment.newInstance(), TopFragment.TAG)
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoTransaction() {
         changeBackingToolbar(getString(R.string.transaction));
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, TransactionFragment.newInstance(), TransactionFragment.TAG)
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoConfirmTransaction() {
         changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoReceive() {
         changeToolbar(getString(R.string.receive), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, ReceiveFragment.newInstance(), ReceiveFragment.TAG)
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoBadgeList() {
         changeBackingToolbar(getString(R.string.badges));
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(2).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, BadgeFragment.newInstance(), BadgeFragment.TAG)
@@ -98,12 +103,13 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
-    public void gotoTransactionHistory() {
+    public void gotoTabHost() {
         changeBackingToolbar(getString(R.string.transaction_history));
         allClearMenuChecked();
+        binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(3).setChecked(true);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, TransactionHistoryFragment.newInstance(), TransactionHistoryFragment.TAG)
+                .replace(R.id.container, TabHostFragment.newInstance(), TabHostFragment.TAG)
                 .commit();
     }
 
@@ -158,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
                     break;
                 case R.id.menu_transaction_history:
                     if (isChecked) break;
-                    gotoTransactionHistory();
+                    gotoTabHost();
                     break;
                 case R.id.menu_setting:
                     Toast.makeText(getApplicationContext(), "Setting!", Toast.LENGTH_SHORT).show();

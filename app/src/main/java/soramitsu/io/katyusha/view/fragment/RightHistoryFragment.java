@@ -12,20 +12,20 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.domain.entity.Transaction;
-import soramitsu.io.katyusha.view.adapter.TransactionListAdapter;
 import soramitsu.io.katyusha.databinding.FragmentTransactionHistoryBinding;
+import soramitsu.io.katyusha.domain.entity.Transaction;
+import soramitsu.io.katyusha.view.Navigator;
+import soramitsu.io.katyusha.view.adapter.TransactionListAdapter;
 
-public class TransactionHistoryFragment extends Fragment {
-    public final static String TAG = TransactionHistoryFragment.class.getSimpleName();
+public class RightHistoryFragment extends Fragment {
+    public static final String TAG = RightHistoryFragment.class.getSimpleName();
 
     Navigator navigator;
     FragmentTransactionHistoryBinding binding;
 
-    public static TransactionHistoryFragment newInstance() {
-        TransactionHistoryFragment fragment = new TransactionHistoryFragment();
+    public static RightHistoryFragment newInstance() {
+        RightHistoryFragment fragment = new RightHistoryFragment();
         return fragment;
     }
 
@@ -39,9 +39,10 @@ public class TransactionHistoryFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_transaction_history, container, false);
     }
 
@@ -52,32 +53,21 @@ public class TransactionHistoryFragment extends Fragment {
 
         List<Transaction> history = new ArrayList<Transaction>() {{
             Transaction transaction = new Transaction();
-            transaction.amount = "1000";
-            transaction.opponent = "hoge支店A";
+            transaction.amount = "can drink vodka";
+            transaction.opponent = "mining A";
             add(transaction);
 
             Transaction transaction1 = new Transaction();
-            transaction1.amount = "300";
-            transaction1.opponent = "hoge支店B";
+            transaction1.amount = "can drink sake";
+            transaction1.opponent = "mining B";
             add(transaction1);
 
             Transaction transaction2 = new Transaction();
-            transaction2.amount = "600";
-            transaction2.opponent = "hoge支店C";
-            add(transaction2);
-
-            Transaction transaction3 = new Transaction();
-            transaction3.amount = "7000";
-            transaction3.opponent = "hoge支店D";
-            add(transaction3);
+            transaction2.amount = "can drink vodka";
+            transaction2.opponent = "brewing A";
+            add(transaction1);
         }};
 
         binding.listView.setAdapter(new TransactionListAdapter(getContext(), history, ""));
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        navigator = null;
     }
 }
