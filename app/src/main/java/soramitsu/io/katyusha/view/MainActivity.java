@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,18 +15,19 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.view.fragment.RightsFragment;
 import soramitsu.io.katyusha.databinding.ActivityMainBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.view.fragment.BadgeFragment;
 import soramitsu.io.katyusha.view.fragment.ConfirmTransactionFragment;
 import soramitsu.io.katyusha.view.fragment.ReceiveFragment;
+import soramitsu.io.katyusha.view.fragment.RightsFragment;
 import soramitsu.io.katyusha.view.fragment.TabHostFragment;
 import soramitsu.io.katyusha.view.fragment.TopFragment;
 import soramitsu.io.katyusha.view.fragment.TransactionFragment;
 
 public class MainActivity extends AppCompatActivity implements Navigator {
     private ActivityMainBinding binding;
+    private FragmentTransaction ft;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(0).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, TopFragment.newInstance(), TopFragment.TAG)
                 .commit();
     }
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, TransactionFragment.newInstance(), TransactionFragment.TAG)
                 .commit();
     }
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
                 .commit();
     }
@@ -88,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, ReceiveFragment.newInstance(), ReceiveFragment.TAG)
                 .commit();
     }
@@ -99,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(2).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
                 .commit();
     }
@@ -110,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(3).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, BadgeFragment.newInstance(), BadgeFragment.TAG)
                 .commit();
     }
@@ -122,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(4).setChecked(true);
         getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, TabHostFragment.newInstance(), TabHostFragment.TAG)
                 .commit();
     }
