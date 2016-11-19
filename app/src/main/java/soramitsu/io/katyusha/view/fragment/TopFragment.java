@@ -54,6 +54,7 @@ public class TopFragment extends Fragment {
         binding.transactionCard.setOnClickListener(v -> navigator.gotoTransaction());
         binding.transactionHistoryCard.setOnClickListener(v -> navigator.gotoTabHost());
         binding.badgeCard.setOnClickListener(v -> navigator.gotoBadgeList());
+        binding.rightsCard.setOnClickListener(v -> navigator.gotoRightsList());
     }
 
     @Override

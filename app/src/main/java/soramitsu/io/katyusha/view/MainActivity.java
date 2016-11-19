@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoTop() {
         initToolbar();
         allClearMenuChecked();
-        binding.toolbar.setElevation(4);
+        binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(0).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, TopFragment.newInstance(), TopFragment.TAG)
