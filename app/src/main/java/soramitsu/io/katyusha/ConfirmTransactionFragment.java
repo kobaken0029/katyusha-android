@@ -17,6 +17,7 @@ import rx.schedulers.Schedulers;
 import soramitsu.io.katyusha.databinding.FragmentConfirmTransactionBinding;
 import soramitsu.io.katyusha.dialogs.MyProgressDialog;
 import soramitsu.io.katyusha.dialogs.SuccessDialog;
+import soramitsu.io.katyusha.entity.UserInfo;
 import soramitsu.io.katyusha.repository.TransactionRepository;
 import soramitsu.io.katyusha.repository.impl.TransactionRepositoryImpl;
 
@@ -54,6 +55,9 @@ public class ConfirmTransactionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = DataBindingUtil.bind(view);
+
+        UserInfo userInfo = ((Katyusha) getActivity().getApplication()).getUserInfo();
+
         binding.cancelButton.setOnClickListener(v -> navigator.gotoTransaction());
         binding.sendButton.setOnClickListener(v -> {
             final MyProgressDialog progressDialog = new MyProgressDialog();
@@ -73,7 +77,7 @@ public class ConfirmTransactionFragment extends Fragment {
                                                 final SuccessDialog successDialog = new SuccessDialog(getLayoutInflater(savedInstanceState));
                                                 successDialog.show(getActivity(), responseObject.message, vv -> {
 
-                                                    ((Katyusha) getActivity().getApplication()).getUserInfo().amount -= 50;
+                                                    userInfo.amount -= 50;
 
                                                     successDialog.hide();
                                                     navigator.gotoTransaction();
@@ -89,6 +93,9 @@ public class ConfirmTransactionFragment extends Fragment {
                             }
                     );
         });
+
+
+        binding.balance.setText("$" + userInfo.amount + " to " + "$" + (userInfo.amount - 50));
 //        Glide.with(this).load(R.raw.arrow).into(new GlideDrawableImageViewTarget(binding.forward));
     }
 }
