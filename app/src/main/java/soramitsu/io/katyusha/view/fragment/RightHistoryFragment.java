@@ -55,17 +55,20 @@ public class RightHistoryFragment extends Fragment {
             Transaction transaction = new Transaction();
             transaction.amount = "can drink vodka";
             transaction.opponent = "mining A";
+            transaction.timestamp = 1465148524;
             add(transaction);
 
             Transaction transaction1 = new Transaction();
             transaction1.amount = "can drink sake";
             transaction1.opponent = "mining B";
+            transaction1.timestamp = 1478799724;
             add(transaction1);
 
             Transaction transaction2 = new Transaction();
             transaction2.amount = "can drink vodka";
             transaction2.opponent = "brewing A";
-            add(transaction1);
+            transaction2.timestamp = 1479577537;
+            add(transaction2);
         }};
 
         binding.listView.setAdapter(new TransactionListAdapter(getContext(), history, ""));
