@@ -14,7 +14,6 @@ public class Transaction {
     public String opponent;
     public String amount;
     public long timestamp;
-    public String kataware = null;
 
     public String modifyDisplayDate() {
         long now = Calendar.getInstance().getTimeInMillis() / 1000;
@@ -22,13 +21,13 @@ public class Transaction {
         if (sec <= 0) {
             return "now";
         } else if (sec < 60) {
-            return sec + "秒";
+            return sec + "s";
         } else if (sec < 3600) {
-            return Math.round(sec / 60) + "分";
+            return Math.round(sec / 60) + "m";
         } else if (sec < 3600 * 24) {
-            return Math.round(sec / (60 * 60)) + "時間";
+            return Math.round(sec / (60 * 60)) + "h";
         } else if (sec < 3600 * 24 * 31) {
-            return Math.round(sec / (60 * 60 * 24)) + "日";
+            return Math.round(sec / (60 * 60 * 24)) + "d";
         } else {
             Date date = new Date(timestamp * 1000);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());

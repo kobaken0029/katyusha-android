@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.databinding.ListItemBinding;
+import soramitsu.io.katyusha.databinding.ListTransactionHistoryBinding;
 import soramitsu.io.katyusha.domain.entity.Transaction;
 
 public class TransactionListAdapter extends BaseAdapter {
@@ -49,13 +49,13 @@ public class TransactionListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ListItemBinding binding;
+        ListTransactionHistoryBinding binding;
         if (convertView == null) {
-            binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.list_item, parent, false);
+            binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.list_transaction_history, parent, false);
             convertView = binding.getRoot();
             convertView.setTag(binding);
         } else {
-            binding = (ListItemBinding) convertView.getTag();
+            binding = (ListTransactionHistoryBinding) convertView.getTag();
         }
         binding.setTransaction(getItem(getCount() - 1 - position));
         binding.state.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_send_money_24dp));

@@ -54,21 +54,25 @@ public class TransactionHistoryFragment extends Fragment {
             Transaction transaction = new Transaction();
             transaction.amount = "1000";
             transaction.opponent = "hoge支店A";
+            transaction.timestamp = 1456940524;
             add(transaction);
 
             Transaction transaction1 = new Transaction();
             transaction1.amount = "300";
             transaction1.opponent = "hoge支店B";
+            transaction1.timestamp = 1465148524;
             add(transaction1);
 
             Transaction transaction2 = new Transaction();
             transaction2.amount = "600";
             transaction2.opponent = "hoge支店C";
+            transaction2.timestamp = 1478799724;
             add(transaction2);
 
             Transaction transaction3 = new Transaction();
             transaction3.amount = "7000";
             transaction3.opponent = "hoge支店D";
+            transaction3.timestamp = 1479577324;
             add(transaction3);
         }};
 
