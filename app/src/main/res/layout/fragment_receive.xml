@@ -47,7 +47,7 @@
                 android:textColorHint="@color/colorAccent" />
         </android.support.design.widget.TextInputLayout>
 
-        <soramitsu.io.katyusha.SimpleCalculatorKeyboardView
+        <soramitsu.io.katyusha.view.SimpleCalculatorKeyboardView
             android:id="@+id/calculator_keyboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

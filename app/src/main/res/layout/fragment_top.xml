@@ -7,7 +7,7 @@
 
         <variable
             name="userInfo"
-            type="soramitsu.io.katyusha.entity.UserInfo" />
+            type="soramitsu.io.katyusha.domain.entity.UserInfo" />
     </data>
 
     <LinearLayout
