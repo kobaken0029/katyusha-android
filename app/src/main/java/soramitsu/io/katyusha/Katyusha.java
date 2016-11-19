@@ -4,9 +4,9 @@ import android.app.Application;
 
 import io.soramitsu.irohaandroid.Iroha;
 import io.soramitsu.irohaandroid.KeyPair;
-import soramitsu.io.katyusha.entity.UserInfo;
-import soramitsu.io.katyusha.repository.UserInfoRepository;
-import soramitsu.io.katyusha.repository.impl.UserInfoRepositoryImpl;
+import soramitsu.io.katyusha.domain.entity.UserInfo;
+import soramitsu.io.katyusha.domain.repository.UserInfoRepository;
+import soramitsu.io.katyusha.data.repository.UserInfoRepositoryImpl;
 
 public class Katyusha extends Application {
     private KeyPair keyPair;
