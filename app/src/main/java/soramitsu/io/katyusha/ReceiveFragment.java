@@ -19,6 +19,7 @@ import java.io.UnsupportedEncodingException;
 
 import soramitsu.io.katyusha.databinding.FragmentReceiveBinding;
 import soramitsu.io.katyusha.entity.TransferQRParameter;
+import soramitsu.io.katyusha.util.QRCodeGenerator;
 
 public class ReceiveFragment extends Fragment {
     public static final String TAG = ReceiveFragment.class.getSimpleName();
@@ -93,12 +94,12 @@ public class ReceiveFragment extends Fragment {
                         binding.numberReceiveAmount.setText(buff.substring(0, buff.length() - 1));
                         return;
                     }
+                    Katyusha katyusha = (Katyusha) getActivity().getApplication();
                     TransferQRParameter qrParams = new TransferQRParameter();
                     qrParams.type = "trans";
-                    qrParams.account = "";
-//                    qrParams.account = fetchAccountUseCase.getPublicKey().single().toBlocking().single();
+                    qrParams.account = katyusha.getPublicKey();
                     qrParams.value = value;
-                    final String alias = ((Katyusha) getActivity().getApplication()).getUserInfo().alias;
+                    final String alias = katyusha.getUserInfo().alias;
                     qrParams.alias = new String(alias.getBytes("UTF-8"), "UTF-8");
                     String qrParamsText = new GsonBuilder()
                             .disableHtmlEscaping()

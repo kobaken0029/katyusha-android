@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha;
+package soramitsu.io.katyusha.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
