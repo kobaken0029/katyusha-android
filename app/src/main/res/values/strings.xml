@@ -3,4 +3,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">HOME</string>
+    <string name="transaction">Transaction</string>
+    <string name="badges">Your Badges</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="close">Close</string>
+    <string name="send">Send</string>
+    <string name="confirm">Confirm</string>
+    <string name="send_payment">Send payment</string>
+    <string name="connection_progress_title">Connection</string>
+    <string name="send_payment_message">Send payment…</string>
+    <string name="how_much_receive">How much would you like to receive?</string>
+    <string name="qr_generated">QR Generated</string>
+    <string name="receive">Receive</string>
 </resources>

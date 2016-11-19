@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bank" />
+                android:src="@drawable/transaction" />
 
         </android.support.v7.widget.CardView>
 

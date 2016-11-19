@@ -2,8 +2,9 @@ package soramitsu.io.katyusha;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,15 +30,18 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         if (getSupportFragmentManager().findFragmentByTag(TopFragment.TAG) != null) {
             super.onBackPressed();
         } else {
+            if (getSupportFragmentManager().findFragmentByTag(ConfirmTransactionFragment.TAG) != null
+                    || getSupportFragmentManager().findFragmentByTag(ReceiveFragment.TAG) != null) {
+                gotoTransaction();
+                return;
+            }
             gotoTop();
         }
     }
 
     @Override
     public void gotoTop() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("HOME");
-        }
+        initToolbar();
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(0).setChecked(true);
         getSupportFragmentManager().beginTransaction()
@@ -47,18 +51,37 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoTransaction() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Transaction");
-        }
+        changeBackingToolbar(getString(R.string.transaction));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(1).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, TransactionFragment.newInstance(), TransactionFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void gotoConfirmTransaction() {
+        changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
+        allClearMenuChecked();
+        binding.navigationView.getMenu().getItem(1).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void gotoReceive() {
+        changeToolbar(getString(R.string.receive), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
+        allClearMenuChecked();
+        binding.navigationView.getMenu().getItem(1).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ReceiveFragment.newInstance(), ReceiveFragment.TAG)
+                .commit();
     }
 
     @Override
     public void gotoBadgeList() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Badge List");
-        }
+        changeBackingToolbar(getString(R.string.badges));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(2).setChecked(true);
         getSupportFragmentManager().beginTransaction()
@@ -68,9 +91,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoTransactionHistory() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Transaction History");
-        }
+        changeBackingToolbar(getString(R.string.transaction_history));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(3).setChecked(true);
         getSupportFragmentManager().beginTransaction()
@@ -86,9 +107,21 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     private void initToolbar() {
-        binding.toolbar.setNavigationIcon(getDrawable(R.drawable.ic_menu_white_24dp));
-        binding.toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        binding.toolbar.setNavigationOnClickListener(view -> binding.drawerLayout.openDrawer(GravityCompat.START));
+        changeToolbar(
+                getString(R.string.home),
+                R.drawable.ic_menu_white_24dp,
+                view -> binding.drawerLayout.openDrawer(GravityCompat.START)
+        );
+    }
+
+    private void changeBackingToolbar(@NonNull String title) {
+        changeToolbar(title, R.drawable.ic_arrow_back_white_24dp, view -> gotoTop());
+    }
+
+    private void changeToolbar(@NonNull String title, @DrawableRes int navigationIcon, View.OnClickListener listener) {
+        binding.toolbar.setTitle(title);
+        binding.toolbar.setNavigationIcon(getDrawable(navigationIcon));
+        binding.toolbar.setNavigationOnClickListener(listener);
     }
 
     private void initNavigationHeader() {
