@@ -14,14 +14,15 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
+import soramitsu.io.katyusha.RightsFragment;
+import soramitsu.io.katyusha.databinding.ActivityMainBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
+import soramitsu.io.katyusha.view.fragment.BadgeFragment;
+import soramitsu.io.katyusha.view.fragment.ConfirmTransactionFragment;
 import soramitsu.io.katyusha.view.fragment.ReceiveFragment;
 import soramitsu.io.katyusha.view.fragment.TopFragment;
 import soramitsu.io.katyusha.view.fragment.TransactionFragment;
 import soramitsu.io.katyusha.view.fragment.TransactionHistoryFragment;
-import soramitsu.io.katyusha.databinding.ActivityMainBinding;
-import soramitsu.io.katyusha.view.fragment.BadgeFragment;
-import soramitsu.io.katyusha.view.fragment.ConfirmTransactionFragment;
 
 public class MainActivity extends AppCompatActivity implements Navigator {
     private ActivityMainBinding binding;
