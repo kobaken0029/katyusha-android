@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
+    public void gotoConfirmTransaction() {
+        changeBackingToolbar(getString(R.string.confirm));
+        allClearMenuChecked();
+        binding.navigationView.getMenu().getItem(1).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
+                .commit();
+    }
+
+    @Override
     public void gotoBadgeList() {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Badge List");
