@@ -10,4 +10,7 @@
     <string name="close">Close</string>
     <string name="send">Send</string>
     <string name="confirm">Confirm</string>
+    <string name="send_payment">Send payment</string>
+    <string name="connection_progress_title">Connection</string>
+    <string name="send_payment_message">Send payment…</string>
 </resources>

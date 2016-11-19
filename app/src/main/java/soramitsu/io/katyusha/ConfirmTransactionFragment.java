@@ -60,7 +60,7 @@ public class ConfirmTransactionFragment extends Fragment {
         binding.cancelButton.setOnClickListener(v -> navigator.gotoTransaction());
         binding.sendButton.setOnClickListener(v -> {
             final MyProgressDialog progressDialog = new MyProgressDialog();
-            progressDialog.show(getActivity(), "Connection", "Send payment…");
+            progressDialog.show(getActivity(), getString(R.string.connection_progress_title), getString(R.string.send_payment_message));
             transactionRepository.sendPayment(null)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
