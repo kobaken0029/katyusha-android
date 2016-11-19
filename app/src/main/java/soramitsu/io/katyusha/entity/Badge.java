@@ -74,10 +74,8 @@ public class Badge {
 
     public void initializeData() {
         badges = new ArrayList<>();
-        badges.add(new Badge("Sports Master", "Spend 150.000 rubles on physical health", R.drawable.plum));
-        badges.add(new Badge("Numismatist", "Collect 10 different types of money", R.drawable.plum));
-        badges.add(new Badge("Benefactor", "Donate 500.000 rubles to charity", R.drawable.plum));
-        badges.add(new Badge("Rock-Star", "Invest 200.000 rubles on musical formation", R.drawable.plum));
-        badges.add(new Badge("Wanderer ", "Spend 100.000 rubles on travel", R.drawable.plum));
+        badges.add(new Badge("StackOverflow", "Собери 100.000 прав одного типа", R.drawable.plum));
+        badges.add(new Badge("Numismatist", "Собери 100 разных прав", R.drawable.plum));
+        badges.add(new Badge("Jedi Exchanger", "Конвертируй 100.000 прав из одного вида в другой", R.drawable.plum));
     }
 }
