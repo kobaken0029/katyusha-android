@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha;
+package soramitsu.io.katyusha.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import soramitsu.io.katyusha.R;
 import soramitsu.io.katyusha.entity.Right;
+import soramitsu.io.katyusha.view.adapter.RightsAdapter;
 
 /**
  * Created by Andrey on 19.11.2016.

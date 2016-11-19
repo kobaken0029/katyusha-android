@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.domain.entity.Badge;
+import soramitsu.io.katyusha.entity.Badge;
 
 /**
  * Created by Andrey on 19.11.2016.

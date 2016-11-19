@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha;
+package soramitsu.io.katyusha.view.adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import soramitsu.io.katyusha.R;
 import soramitsu.io.katyusha.entity.Right;
 
 /**
@@ -19,7 +20,7 @@ import soramitsu.io.katyusha.entity.Right;
 public class RightsAdapter extends RecyclerView.Adapter<RightsAdapter.RightsViewHolder> {
     private List<Right> rightList;
 
-    RightsAdapter(List<Right> rightsList) {
+    public RightsAdapter(List<Right> rightsList) {
         this.rightList = rightsList;
     }
 

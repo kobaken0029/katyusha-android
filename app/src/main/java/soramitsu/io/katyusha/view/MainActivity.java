@@ -14,7 +14,7 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.RightsFragment;
+import soramitsu.io.katyusha.view.fragment.RightsFragment;
 import soramitsu.io.katyusha.databinding.ActivityMainBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.view.fragment.BadgeFragment;

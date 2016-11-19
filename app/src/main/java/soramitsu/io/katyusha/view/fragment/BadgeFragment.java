@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.domain.entity.Badge;
+import soramitsu.io.katyusha.entity.Badge;
 import soramitsu.io.katyusha.view.adapter.BadgeAdapter;
 
 public class BadgeFragment extends Fragment {
