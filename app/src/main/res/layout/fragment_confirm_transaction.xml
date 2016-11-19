@@ -41,12 +41,23 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/icon_container"
             android:layout_marginBottom="32dp"
             android:gravity="center"
             android:maxLines="1"
             android:text="@string/send_payment"
             android:textColor="@color/colorPrimary"
+            android:textSize="40sp" />
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="$1000 to $950"
+            android:textColor="@color/colorAccent"
             android:textSize="40sp" />
 
         <me.grantland.widget.AutofitTextView
