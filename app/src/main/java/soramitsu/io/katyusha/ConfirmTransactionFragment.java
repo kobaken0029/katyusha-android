@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -75,6 +72,9 @@ public class ConfirmTransactionFragment extends Fragment {
 
                                                 final SuccessDialog successDialog = new SuccessDialog(getLayoutInflater(savedInstanceState));
                                                 successDialog.show(getActivity(), responseObject.message, vv -> {
+
+                                                    ((Katyusha) getActivity().getApplication()).getUserInfo().amount -= 50;
+
                                                     successDialog.hide();
                                                     navigator.gotoTransaction();
                                                 });
