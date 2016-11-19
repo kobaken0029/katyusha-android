@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoTop() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("HOME");
-        }
         initToolbar();
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(0).setChecked(true);
@@ -49,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoTransaction() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Transaction");
-        }
         changeBackingToolbar(getString(R.string.transaction));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(1).setChecked(true);
@@ -72,9 +66,6 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoBadgeList() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Badge List");
-        }
         changeBackingToolbar(getString(R.string.badges));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(2).setChecked(true);
@@ -85,9 +76,6 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoTransactionHistory() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Transaction History");
-        }
         changeBackingToolbar(getString(R.string.transaction_history));
         allClearMenuChecked();
         binding.navigationView.getMenu().getItem(3).setChecked(true);
