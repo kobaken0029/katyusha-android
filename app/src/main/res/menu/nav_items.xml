@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_compare_arrows_black_24dp"
             android:title="Transaction" />
         <item
+            android:id="@+id/menu_rights"
+            android:icon="@drawable/ic_work_black_24dp"
+            android:title="Rights"/>
+        <item
             android:id="@+id/menu_badge"
             android:icon="@drawable/ic_star_black_24dp"
             android:title="Badge" />
