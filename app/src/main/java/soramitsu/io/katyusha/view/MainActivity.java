@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     public void gotoRightsList() {
         changeBackingToolbar(getString(R.string.rights));
         allClearMenuChecked();
+        binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(2).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
