@@ -14,6 +14,14 @@ public class Badge {
     private String badgeDescription;
     private int badgeImageId;
     private List<Badge> badges;
+    private boolean badgeState;
+
+    public Badge(String badgeName, String badgeDescription, int badgeImageId, boolean badgeState) {
+        this.badgeName = badgeName;
+        this.badgeDescription = badgeDescription;
+        this.badgeImageId = badgeImageId;
+        this.badgeState = badgeState;
+    }
 
     public Badge() {
     }
@@ -22,6 +30,14 @@ public class Badge {
         this.badgeName = badgeName;
         this.badgeDescription = badgeDescription;
         this.badgeImageId = badgeImageId;
+    }
+
+    public boolean isBadgeState() {
+        return badgeState;
+    }
+
+    public void setBadgeState(boolean badgeState) {
+        this.badgeState = badgeState;
     }
 
     public String getBadgeName() {

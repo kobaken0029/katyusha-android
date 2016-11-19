@@ -17,7 +17,6 @@ import com.google.zxing.WriterException;
 
 import java.io.UnsupportedEncodingException;
 
-import soramitsu.io.katyusha.databinding.FragmentReceiveBinding;
 import soramitsu.io.katyusha.entity.TransferQRParameter;
 import soramitsu.io.katyusha.util.QRCodeGenerator;
 
@@ -27,7 +26,7 @@ public class ReceiveFragment extends Fragment {
     private static final String QR_TEXT_DEFAULT = "{\"type\":\"trans\",\"account\":\"\",\"value\":0}";
 
     Navigator navigator;
-    FragmentReceiveBinding binding;
+    soramitsu.io.katyusha.databinding.FragmentReceiveBinding binding;
 
     public static ReceiveFragment newInstance() {
         ReceiveFragment fragment = new ReceiveFragment();

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_rights"
+        style="@style/MyCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#97d4d9">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/right_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/plum" />
+
+            <TextView
+                android:text="Amount:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAmount"
+                android:layout_alignBottom="@+id/right_amount"
+                android:layout_toEndOf="@+id/right_image"
+                android:textStyle="normal|bold"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:id="@+id/right_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10000"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_below="@+id/textViewRightName"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/textViewAmount"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                android:text="Price:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewRightPrice"
+                android:layout_below="@+id/textViewAmount"
+                android:layout_toEndOf="@+id/right_image"
+                android:layout_marginTop="14dp"
+                android:textStyle="normal|bold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="2.5$"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewThingPrices"
+                android:layout_alignBottom="@+id/textViewRightPrice"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/textViewAmount"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textViewRightName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vodka"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="normal|bold"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textViewRightPrice" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>
