@@ -5,6 +5,7 @@ public interface Navigator {
     void gotoTransaction();
     void gotoConfirmTransaction();
     void gotoReceive();
+    void gotoRightsList();
     void gotoBadgeList();
     void gotoTabHost();
 }

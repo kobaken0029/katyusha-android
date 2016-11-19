@@ -14,6 +14,7 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
+import soramitsu.io.katyusha.RightsFragment;
 import soramitsu.io.katyusha.databinding.ActivityMainBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.view.fragment.BadgeFragment;
@@ -92,22 +93,33 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
+    public void gotoRightsList() {
+        changeBackingToolbar(getString(R.string.rights));
+        allClearMenuChecked();
+        binding.navigationView.getMenu().getItem(2).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
+                .commit();
+    }
+
+    @Override
     public void gotoBadgeList() {
         changeBackingToolbar(getString(R.string.badges));
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
-        binding.navigationView.getMenu().getItem(2).setChecked(true);
+        binding.navigationView.getMenu().getItem(3).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, BadgeFragment.newInstance(), BadgeFragment.TAG)
                 .commit();
     }
+
 
     @Override
     public void gotoTabHost() {
         changeBackingToolbar(getString(R.string.transaction_history));
         allClearMenuChecked();
         binding.toolbar.setElevation(0);
-        binding.navigationView.getMenu().getItem(3).setChecked(true);
+        binding.navigationView.getMenu().getItem(4).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, TabHostFragment.newInstance(), TabHostFragment.TAG)
                 .commit();
@@ -158,6 +170,10 @@ public class MainActivity extends AppCompatActivity implements Navigator {
                     if (isChecked) break;
                     gotoTransaction();
                     break;
+                case R.id.menu_rights:
+                    if (isChecked) break;
+                    gotoRightsList();
+                    break;
                 case R.id.menu_badge:
                     if (isChecked) break;
                     gotoBadgeList();
@@ -179,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     private void allClearMenuChecked() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             binding.navigationView.getMenu().getItem(i).setChecked(false);
         }
     }
