@@ -1,33 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="16dp">
 
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:id="@+id/root"-->
+    <!--style="@style/MyCardView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:cardBackgroundColor="#97d4d9">-->
+
+    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/timestamp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_alignParentEnd="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="bottom|end"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:padding="4dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:text="@{transaction.modifyDisplayDate()}"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textColor="@color/secondary_text"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textSize="12sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;tools:text="10秒前" />&ndash;&gt;-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scaleType="fitCenter"-->
+    <!--android:src="@drawable/plum" />-->
+
+    <!--</android.support.v7.widget.CardView>-->
     <android.support.v7.widget.CardView
-        android:id="@+id/root"
+        android:id="@+id/cv"
         style="@style/MyCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:cardBackgroundColor="#97d4d9">
 
-        <!--<TextView-->
-        <!--android:id="@+id/timestamp"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:padding="4dp"-->
-        <!--android:text="@{transaction.modifyDisplayDate()}"-->
-        <!--android:textColor="@color/secondary_text"-->
-        <!--android:textSize="12sp"-->
-        <!--tools:text="10秒前" />-->
-
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/plum" />
+            android:padding="16dp">
 
+            <ImageView
+                android:id="@+id/badge_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/plum" />
+
+            <ProgressBar
+                android:id="@+id/badge_progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/badge_image"
+                android:max="100"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/textViewBadgeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/badge_image"
+                android:text="Curious"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/badge_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/badge_image"
+                android:text="Spend 100.000 rubles on travel"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 </layout>
