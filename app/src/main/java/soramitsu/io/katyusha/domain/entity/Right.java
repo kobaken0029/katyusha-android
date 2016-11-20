@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha.entity;
+package soramitsu.io.katyusha.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class Right {
 
     public void initializeData() {
         rights = new ArrayList<>();
-        rights.add(new Right("Vodka", "1000", "2.5$", R.drawable.vodka_only));
-        rights.add(new Right("Bread", "2000", "1.2$", R.drawable.bread_only));
+        rights.add(new Right("Vodka", "1000", "3.0$", R.drawable.vodka_only));
+        rights.add(new Right("Bread", "2000", "2.0$", R.drawable.bread_only));
     }
 }

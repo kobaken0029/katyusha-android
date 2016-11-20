@@ -20,6 +20,7 @@ import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.view.fragment.BadgeFragment;
 import soramitsu.io.katyusha.view.fragment.ConfirmTransactionFragment;
 import soramitsu.io.katyusha.view.fragment.ReceiveFragment;
+import soramitsu.io.katyusha.view.fragment.RightFragment;
 import soramitsu.io.katyusha.view.fragment.RightsFragment;
 import soramitsu.io.katyusha.view.fragment.TabHostFragment;
 import soramitsu.io.katyusha.view.fragment.TopFragment;
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements Navigator {
             if (getSupportFragmentManager().findFragmentByTag(ConfirmTransactionFragment.TAG) != null
                     || getSupportFragmentManager().findFragmentByTag(ReceiveFragment.TAG) != null) {
                 gotoTransaction();
+                return;
+            }
+            if (getSupportFragmentManager().findFragmentByTag(RightFragment.TAG) != null) {
+                gotoRightsList();
                 return;
             }
             gotoTop();
@@ -75,14 +80,14 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
-    public void gotoConfirmTransaction() {
+    public void gotoConfirmTransaction(@NonNull String target, @NonNull String sender) {
         changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
+                .replace(R.id.container, ConfirmTransactionFragment.newInstance(target, sender), ConfirmTransactionFragment.TAG)
                 .commit();
     }
 
@@ -107,6 +112,18 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void gotoRight(@NonNull String target) {
+        changeToolbar(target, R.drawable.ic_arrow_back_white_24dp, v -> gotoRightsList());
+        allClearMenuChecked();
+        binding.toolbar.setElevation(4);
+        binding.navigationView.getMenu().getItem(2).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.container, RightFragment.newInstance(target), RightFragment.TAG)
                 .commit();
     }
 

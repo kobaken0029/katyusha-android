@@ -30,6 +30,14 @@ android {
     dataBinding {
         enabled true
     }
+    productFlavors {
+        makoto {
+            applicationId "soramitsu.io.katyusha.makoto"
+        }
+        tony {
+            applicationId "soramitsu.io.katyusha.tony"
+        }
+    }
 }
 
 def SUPPORT_PACKAGE_VERSION = "25.0.1"

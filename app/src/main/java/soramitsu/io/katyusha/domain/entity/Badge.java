@@ -1,4 +1,4 @@
-package soramitsu.io.katyusha.entity;
+package soramitsu.io.katyusha.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;

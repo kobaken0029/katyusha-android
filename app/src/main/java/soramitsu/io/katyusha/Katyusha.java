@@ -4,9 +4,9 @@ import android.app.Application;
 
 import io.soramitsu.irohaandroid.Iroha;
 import io.soramitsu.irohaandroid.KeyPair;
+import soramitsu.io.katyusha.data.repository.UserInfoRepositoryImpl;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
 import soramitsu.io.katyusha.domain.repository.UserInfoRepository;
-import soramitsu.io.katyusha.data.repository.UserInfoRepositoryImpl;
 
 public class Katyusha extends Application {
     private KeyPair keyPair;
@@ -30,7 +30,11 @@ public class Katyusha extends Application {
     }
 
     public UserInfo getUserInfo() {
-        userInfo.image = getDrawable(R.drawable.takemiya);
+        if (userInfo.alias.equals("makoto")) {
+            userInfo.image = getDrawable(R.drawable.takemiya);
+        } else {
+            userInfo.image = getDrawable(R.drawable.tony);
+        }
         return userInfo;
     }
 }
