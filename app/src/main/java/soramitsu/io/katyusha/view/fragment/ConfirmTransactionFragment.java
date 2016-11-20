@@ -2,7 +2,6 @@ package soramitsu.io.katyusha.view.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,14 +17,14 @@ import java.util.TimerTask;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import soramitsu.io.katyusha.Katyusha;
-import soramitsu.io.katyusha.data.repository.TransactionRepositoryImpl;
-import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.R;
+import soramitsu.io.katyusha.data.repository.TransactionRepositoryImpl;
 import soramitsu.io.katyusha.databinding.FragmentConfirmTransactionBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
+import soramitsu.io.katyusha.domain.repository.TransactionRepository;
+import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.view.dialogs.MyProgressDialog;
 import soramitsu.io.katyusha.view.dialogs.SuccessDialog;
-import soramitsu.io.katyusha.domain.repository.TransactionRepository;
 
 public class ConfirmTransactionFragment extends Fragment {
     public static final String TAG = ConfirmTransactionFragment.class.getSimpleName();
@@ -74,7 +73,7 @@ public class ConfirmTransactionFragment extends Fragment {
         final String target = getArguments().getString(ARG_TARGET_NAME);
         final String receiver = getArguments().getString(ARG_RECEIVER);
 
-        setConfirmText(userInfo.amount, target, receiver);
+        setConfirmInfo(userInfo.amount, target, receiver);
 
         binding.cancelButton.setOnClickListener(v -> navigator.gotoTransaction());
         binding.sendButton.setOnClickListener(v -> {
@@ -119,7 +118,7 @@ public class ConfirmTransactionFragment extends Fragment {
         });
     }
 
-    private void setConfirmText(int amount, String target, String receiver) {
+    private void setConfirmInfo(int amount, String target, String receiver) {
         String balanceText = "$" + amount + " to " + "$";
         if (target.equals("Vodka")) {
             balanceText += (amount - 3) + "";
