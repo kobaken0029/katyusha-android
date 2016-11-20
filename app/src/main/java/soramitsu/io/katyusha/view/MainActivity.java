@@ -8,7 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         init();
     }
@@ -61,21 +67,38 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         allClearMenuChecked();
         binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(0).setChecked(true);
+
+        Explode explode = new Explode();
+        TopFragment fragment = TopFragment.newInstance();
+        fragment.setEnterTransition(explode);
+        fragment.setExitTransition(explode);
+
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, TopFragment.newInstance(), TopFragment.TAG)
+                .replace(R.id.container, fragment, TopFragment.TAG)
                 .commit();
     }
 
     @Override
     public void gotoTransaction() {
-        changeBackingToolbar(getString(R.string.transaction));
+        initToolbar();
+        binding.toolbar.setTitle(getString(R.string.transaction));
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
+
+        Slide open = new Slide();
+        open.setSlideEdge(Gravity.END);
+        Slide close = new Slide();
+        close.setSlideEdge(Gravity.START);
+
+        TransactionFragment fragment = TransactionFragment.newInstance();
+        fragment.setEnterTransition(open);
+        fragment.setExitTransition(new Explode());
+
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, TransactionFragment.newInstance(), TransactionFragment.TAG)
+                .replace(R.id.container, fragment, TransactionFragment.TAG)
                 .commit();
     }
 
@@ -97,21 +120,38 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
+
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.END);
+
+        ReceiveFragment fragment = ReceiveFragment.newInstance();
+        fragment.setEnterTransition(slide);
+        fragment.setExitTransition(slide);
+
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, ReceiveFragment.newInstance(), ReceiveFragment.TAG)
+                .replace(R.id.container, fragment, ReceiveFragment.TAG)
                 .commit();
     }
 
     @Override
     public void gotoRightsList() {
-        changeBackingToolbar(getString(R.string.rights));
+        initToolbar();
+        binding.toolbar.setTitle(getString(R.string.rights));
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(2).setChecked(true);
+
+        Slide open = new Slide();
+        open.setSlideEdge(Gravity.END);
+
+        RightsFragment fragment = RightsFragment.newInstance();
+        fragment.setEnterTransition(open);
+        fragment.setExitTransition(new Explode());
+
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
+                .replace(R.id.container, fragment, RightsFragment.TAG)
                 .commit();
     }
 
@@ -129,20 +169,29 @@ public class MainActivity extends AppCompatActivity implements Navigator {
 
     @Override
     public void gotoBadgeList() {
-        changeBackingToolbar(getString(R.string.badges));
+        initToolbar();
+        binding.toolbar.setTitle(getString(R.string.badges));
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(3).setChecked(true);
+
+        Slide open = new Slide();
+        open.setSlideEdge(Gravity.END);
+
+        BadgeFragment fragment = BadgeFragment.newInstance();
+        fragment.setEnterTransition(open);
+        fragment.setExitTransition(new Explode());
+
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, BadgeFragment.newInstance(), BadgeFragment.TAG)
+                .replace(R.id.container, fragment, BadgeFragment.TAG)
                 .commit();
     }
 
-
     @Override
     public void gotoTabHost() {
-        changeBackingToolbar(getString(R.string.transaction_history));
+        initToolbar();
+        binding.toolbar.setTitle(getString(R.string.transaction_history));
         allClearMenuChecked();
         binding.toolbar.setElevation(0);
         binding.navigationView.getMenu().getItem(4).setChecked(true);
@@ -167,11 +216,8 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         );
     }
 
-    private void changeBackingToolbar(@NonNull String title) {
-        changeToolbar(title, R.drawable.ic_arrow_back_white_24dp, view -> gotoTop());
-    }
-
-    private void changeToolbar(@NonNull String title, @DrawableRes int navigationIcon, View.OnClickListener listener) {
+    private void changeToolbar(@NonNull String title, @DrawableRes int navigationIcon,
+                               View.OnClickListener listener) {
         binding.toolbar.setTitle(title);
         binding.toolbar.setNavigationIcon(getDrawable(navigationIcon));
         binding.toolbar.setNavigationOnClickListener(listener);
