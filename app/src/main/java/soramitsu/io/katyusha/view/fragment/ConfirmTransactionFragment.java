@@ -73,7 +73,7 @@ public class ConfirmTransactionFragment extends Fragment {
         final String target = getArguments().getString(ARG_TARGET_NAME);
         final String receiver = getArguments().getString(ARG_RECEIVER);
 
-        setConfirmInfo(userInfo.amount, target, receiver);
+        setConfirmInfo(userInfo, target, receiver);
 
         binding.cancelButton.setOnClickListener(v -> navigator.gotoTransaction());
         binding.sendButton.setOnClickListener(v -> {
@@ -99,7 +99,7 @@ public class ConfirmTransactionFragment extends Fragment {
                                                     } else if (target.equals("Bread")) {
                                                         userInfo.amount -= 2;
                                                     } else {
-                                                        userInfo.amount -= 50;
+                                                        userInfo.amount -= Integer.parseInt(target);
                                                     }
 
                                                     successDialog.hide();
@@ -118,14 +118,14 @@ public class ConfirmTransactionFragment extends Fragment {
         });
     }
 
-    private void setConfirmInfo(int amount, String target, String receiver) {
-        String balanceText = "$" + amount + " to " + "$";
+    private void setConfirmInfo(UserInfo userInfo, String target, String receiver) {
+        String balanceText = "$" + userInfo.amount + " to " + "$";
         if (target.equals("Vodka")) {
-            balanceText += (amount - 3) + "";
+            balanceText += (userInfo.amount - 3) + "";
         } else if (target.equals("Bread")) {
-            balanceText += (amount - 2) + "";
+            balanceText += (userInfo.amount - 2) + "";
         } else {
-            balanceText += (amount - 50) + "";
+            balanceText += (userInfo.amount - Integer.parseInt(target)) + "";
         }
         binding.balance.setText(balanceText);
 
@@ -138,11 +138,15 @@ public class ConfirmTransactionFragment extends Fragment {
         message += " to " + receiver;
         binding.message.setText(message);
 
-        if (receiver.equals("tony")) {
+        if (userInfo.alias.equals("tony")) {
+            binding.senderIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.tony));
+        } else {
             binding.senderIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.takemiya));
+        }
+
+        if (receiver.equals("tony")) {
             binding.receiverIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.tony));
         } else {
-            binding.senderIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.tony));
             binding.receiverIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.takemiya));
         }
     }
