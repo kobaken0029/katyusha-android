@@ -1,5 +1,6 @@
 package soramitsu.io.katyusha.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 
 import soramitsu.io.katyusha.R;
 import soramitsu.io.katyusha.entity.Right;
+import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.view.adapter.RightsAdapter;
 
 /**
@@ -19,8 +21,20 @@ import soramitsu.io.katyusha.view.adapter.RightsAdapter;
 public class RightsFragment extends Fragment {
     public static final String TAG = RightsFragment.class.getSimpleName();
 
+    Navigator navigator;
+
     public static RightsFragment newInstance() {
         return new RightsFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Navigator) {
+            navigator = (Navigator) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement Navigator");
+        }
     }
 
     @Override
@@ -32,7 +46,7 @@ public class RightsFragment extends Fragment {
         Right right = new Right();
         right.initializeData();
 
-        RightsAdapter rightsAdapter = new RightsAdapter(right.getRights());
+        RightsAdapter rightsAdapter = new RightsAdapter(right.getRights(), navigator::gotoRight);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
         rv.setLayoutManager(mLayoutManager);

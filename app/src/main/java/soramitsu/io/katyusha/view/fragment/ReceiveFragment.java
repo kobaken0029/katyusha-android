@@ -101,7 +101,7 @@ public class ReceiveFragment extends Fragment {
                     TransferQRParameter qrParams = new TransferQRParameter();
                     qrParams.type = "trans";
                     qrParams.account = katyusha.getPublicKey();
-                    qrParams.value = value;
+                    qrParams.value = String.valueOf(value);
                     final String alias = katyusha.getUserInfo().alias;
                     qrParams.alias = new String(alias.getBytes("UTF-8"), "UTF-8");
                     String qrParamsText = new GsonBuilder()

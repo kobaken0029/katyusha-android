@@ -3,6 +3,7 @@ package soramitsu.io.katyusha.view.fragment;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,13 +28,18 @@ import soramitsu.io.katyusha.data.repository.TransactionRepositoryImpl;
 public class ConfirmTransactionFragment extends Fragment {
     public static final String TAG = ConfirmTransactionFragment.class.getSimpleName();
 
+    public static final String ARG_TARGET_NAME = "target_name";
+
     Navigator navigator;
     FragmentConfirmTransactionBinding binding;
 
     private TransactionRepository transactionRepository = new TransactionRepositoryImpl();
 
-    public static ConfirmTransactionFragment newInstance() {
+    public static ConfirmTransactionFragment newInstance(@NonNull String target) {
         ConfirmTransactionFragment fragment = new ConfirmTransactionFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_TARGET_NAME, target);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -61,6 +67,8 @@ public class ConfirmTransactionFragment extends Fragment {
 
         UserInfo userInfo = ((Katyusha) getActivity().getApplication()).getUserInfo();
 
+        final String target = getArguments().getString(ARG_TARGET_NAME);
+
         binding.cancelButton.setOnClickListener(v -> navigator.gotoTransaction());
         binding.sendButton.setOnClickListener(v -> {
             final MyProgressDialog progressDialog = new MyProgressDialog();
@@ -80,7 +88,13 @@ public class ConfirmTransactionFragment extends Fragment {
                                                 final SuccessDialog successDialog = new SuccessDialog(getLayoutInflater(savedInstanceState));
                                                 successDialog.show(getActivity(), responseObject.message, vv -> {
 
-                                                    userInfo.amount -= 50;
+                                                    if (target.equals("Vodka")) {
+                                                        userInfo.amount -= 3;
+                                                    } else if (target.equals("Bread")) {
+                                                        userInfo.amount -= 2;
+                                                    } else {
+                                                        userInfo.amount -= 50;
+                                                    }
 
                                                     successDialog.hide();
                                                     navigator.gotoTransaction();
@@ -97,6 +111,11 @@ public class ConfirmTransactionFragment extends Fragment {
                     );
         });
 
-        binding.balance.setText("$" + userInfo.amount + " to " + "$" + (userInfo.amount - 50));
+        binding.balance.setText(
+                "$" + userInfo.amount + " to " + "$" + (
+                        target.equals("Vodka") ? userInfo.amount - 3 :
+                        target.equals("Bread") ? userInfo.amount - 2 : userInfo.amount - 50
+                )
+        );
     }
 }

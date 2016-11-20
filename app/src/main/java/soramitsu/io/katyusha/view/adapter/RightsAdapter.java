@@ -12,6 +12,7 @@ import java.util.List;
 
 import soramitsu.io.katyusha.R;
 import soramitsu.io.katyusha.entity.Right;
+import soramitsu.io.katyusha.view.Navigator;
 
 /**
  * Created by Andrey on 19.11.2016.
@@ -19,9 +20,15 @@ import soramitsu.io.katyusha.entity.Right;
 
 public class RightsAdapter extends RecyclerView.Adapter<RightsAdapter.RightsViewHolder> {
     private List<Right> rightList;
+    private OnClickItemListener listener;
 
-    public RightsAdapter(List<Right> rightsList) {
+    public interface OnClickItemListener {
+        void onClickItem(String contentName);
+    }
+
+    public RightsAdapter(List<Right> rightsList, OnClickItemListener listener) {
         this.rightList = rightsList;
+        this.listener = listener;
     }
 
     @Override
@@ -41,6 +48,7 @@ public class RightsAdapter extends RecyclerView.Adapter<RightsAdapter.RightsView
         holder.rightAmount.setText(rightList.get(position).getRightsAmount());
         holder.rightPrice.setText(rightList.get(position).getRightsPrice());
         holder.rightImage.setImageResource(rightList.get(position).getRightImageId());
+        holder.cardView.setOnClickListener(v -> listener.onClickItem(holder.rightName.getText().toString()));
     }
 
     @Override

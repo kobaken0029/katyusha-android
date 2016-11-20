@@ -56,6 +56,6 @@ public class TransactionFragment extends Fragment implements OnQRReaderListener 
 
     @Override
     public void setOnResult(String result) {
-        navigator.gotoConfirmTransaction();
+        navigator.gotoConfirmTransaction("");
     }
 }

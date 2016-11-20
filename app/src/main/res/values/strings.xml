@@ -17,4 +17,6 @@
     <string name="receive">Receive</string>
     <string name="money">Money</string>
     <string name="right">Right</string>
+    <string name="send_right">Send right…</string>
+    <string name="right_title">Would you like read the QR for camera?</string>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import de.hdodenhof.circleimageview.CircleImageView;
 import soramitsu.io.katyusha.Katyusha;
 import soramitsu.io.katyusha.R;
+import soramitsu.io.katyusha.view.fragment.RightFragment;
 import soramitsu.io.katyusha.view.fragment.RightsFragment;
 import soramitsu.io.katyusha.databinding.ActivityMainBinding;
 import soramitsu.io.katyusha.domain.entity.UserInfo;
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements Navigator {
                 gotoTransaction();
                 return;
             }
+            if (getSupportFragmentManager().findFragmentByTag(RightFragment.TAG) != null) {
+                gotoRightsList();
+                return;
+            }
             gotoTop();
         }
     }
@@ -71,13 +76,13 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
-    public void gotoConfirmTransaction() {
+    public void gotoConfirmTransaction(@NonNull String target) {
         changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, ConfirmTransactionFragment.newInstance(), ConfirmTransactionFragment.TAG)
+                .replace(R.id.container, ConfirmTransactionFragment.newInstance(target), ConfirmTransactionFragment.TAG)
                 .commit();
     }
 
@@ -100,6 +105,17 @@ public class MainActivity extends AppCompatActivity implements Navigator {
         binding.navigationView.getMenu().getItem(2).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, RightsFragment.newInstance(), RightsFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void gotoRight(@NonNull String target) {
+        changeToolbar(target, R.drawable.ic_arrow_back_white_24dp, v -> gotoRightsList());
+        allClearMenuChecked();
+        binding.toolbar.setElevation(4);
+        binding.navigationView.getMenu().getItem(2).setChecked(true);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, RightFragment.newInstance(target), RightFragment.TAG)
                 .commit();
     }
 
