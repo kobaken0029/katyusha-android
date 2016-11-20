@@ -11,8 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.entity.Right;
-import soramitsu.io.katyusha.view.Navigator;
+import soramitsu.io.katyusha.domain.entity.Right;
 
 /**
  * Created by Andrey on 19.11.2016.

@@ -6,7 +6,7 @@ import rx.Observable;
 import soramitsu.io.katyusha.domain.entity.request.TransferRequest;
 import soramitsu.io.katyusha.domain.entity.response.ResponseObject;
 import soramitsu.io.katyusha.domain.repository.RightRepository;
-import soramitsu.io.katyusha.entity.Right;
+import soramitsu.io.katyusha.domain.entity.Right;
 
 public class RightRepositoryImpl extends RetrofitRepository implements RightRepository {
 

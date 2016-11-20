@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+
+import soramitsu.io.katyusha.domain.entity.TransferQRParameter;
 import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.R;
 import soramitsu.io.katyusha.databinding.FragmentTransactionBinding;
@@ -56,6 +59,7 @@ public class TransactionFragment extends Fragment implements OnQRReaderListener 
 
     @Override
     public void setOnResult(String result) {
-        navigator.gotoConfirmTransaction("");
+        TransferQRParameter qrParameter = new Gson().fromJson(result, TransferQRParameter.class);
+        navigator.gotoConfirmTransaction(qrParameter.value, qrParameter.alias);
     }
 }

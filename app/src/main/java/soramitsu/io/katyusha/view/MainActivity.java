@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity implements Navigator {
     }
 
     @Override
-    public void gotoConfirmTransaction(@NonNull String target) {
+    public void gotoConfirmTransaction(@NonNull String target, @NonNull String sender) {
         changeToolbar(getString(R.string.confirm), R.drawable.ic_arrow_back_white_24dp, v -> gotoTransaction());
         allClearMenuChecked();
         binding.toolbar.setElevation(4);
         binding.navigationView.getMenu().getItem(1).setChecked(true);
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.container, ConfirmTransactionFragment.newInstance(target), ConfirmTransactionFragment.TAG)
+                .replace(R.id.container, ConfirmTransactionFragment.newInstance(target, sender), ConfirmTransactionFragment.TAG)
                 .commit();
     }
 

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import soramitsu.io.katyusha.R;
-import soramitsu.io.katyusha.entity.Right;
+import soramitsu.io.katyusha.domain.entity.Right;
 import soramitsu.io.katyusha.view.Navigator;
 import soramitsu.io.katyusha.view.adapter.RightsAdapter;
 
